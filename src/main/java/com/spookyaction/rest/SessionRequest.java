@@ -14,8 +14,6 @@ import java.util.logging.Level;
 
 public class SessionRequest {
 
-
-
     private JSONArray jsonData = new JSONArray();
 
     private String sessionID;
@@ -25,7 +23,7 @@ public class SessionRequest {
     private List<long[]> smallDataList;
 
     public SessionRequest(String sessionID, String startTimeStamp, int requestIndex, int maxData,
-                          List<long[]> smallDataList) throws IOException, InterruptedException {
+                          List<long[]> smallDataList) {
         this.sessionID = sessionID;
         this.startTimeStamp = startTimeStamp;
         this.requestIndex = requestIndex;
@@ -35,8 +33,9 @@ public class SessionRequest {
         postData();
     }
 
-    // Send request
-    private void postData() throws IOException, InterruptedException {
+    // Send POST request using the same login client to authenticate
+    // Include the sessionID and the sub list smallDataList
+    private void postData() {
         buildJsonData();
 
         String response = Main.login.client.target("http://localhost:8080/spooky/rest/v1")

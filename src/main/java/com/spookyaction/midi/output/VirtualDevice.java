@@ -40,17 +40,13 @@ public class VirtualDevice implements Transmitter, Receiver {
             } else {
                 Main.logger.log(Level.INFO, "Output: " + duration + " : " + dynamic + " : " + positionX + " : " + positionY);
 
-                try {
-                    inputDataListBuilder.addToInputDataList(duration, dynamic, positionX, positionY);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                // Add to the data list that will sent the the web service in pieces
+                inputDataListBuilder.addToInputDataList(duration, dynamic, positionX, positionY);
             }
             sumDurations = timeStamp;
         }
 
+        // Pass the original midi message and time stamp to the default receiver
         this.getReceiver().send(midiMessage, timeStamp);
         count++;
     }

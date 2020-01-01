@@ -14,18 +14,14 @@ public class OpenSequencer {
     public OpenSequencer(){
 
     }
-// Get default sequencer.
-
+    // Use the default sequencer for timing
     public void openSequencer() {
 
         try {
             sequencer = MidiSystem.getSequencer();
-
             if (sequencer == null) {
-                // Error -- sequencer device is not supported.
-                // Inform user and return...
+                Main.logger.log(Level.INFO," No Sequencer");
             } else {
-                // Acquire resources and make operational.
                 sequencer.open();
                 Main.logger.log(Level.INFO, "Sequencer open");
             }

@@ -11,7 +11,9 @@ public class InputDataListBuilder {
     public int requestIndex = 0;
     public List<long[]> inputDataList = new ArrayList<long[]>();
 
-    public void addToInputDataList(long duration, long dynamic, long positionX, long positionY) throws IOException, InterruptedException {
+    // This method is used to add parameters to a list. A sublist list is created as a parameter for
+    // a new instance of SessionRequest, if the size of the main list is divisible by the maxData.
+    public void addToInputDataList(long duration, long dynamic, long positionX, long positionY) {
         inputDataList.add(new long[] {duration,dynamic, positionX, positionY});
 
         // Pass the value to a variable, since the size can change before the next reference

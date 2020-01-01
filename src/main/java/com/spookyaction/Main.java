@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class Main{
 
-    // Bad design
+    // Needs to be more secure
     public static LoginRequest login;
 
     public static Logger logger;
@@ -54,7 +54,7 @@ public class Main{
             System.out.println("Enter q to quit: ");
             String terminateProgram = scanner.nextLine();// How did this work?
 
-            if (terminateProgram == "q") {
+            if (terminateProgram.equals("q")) {
                 record.stop();
             }
 

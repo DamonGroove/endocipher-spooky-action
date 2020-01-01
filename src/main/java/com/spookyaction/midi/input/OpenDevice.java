@@ -14,6 +14,7 @@ public class OpenDevice {
         this.device = device;
     }
 
+    // Open the selected midi device
     public void openDevice() {
         Main.logger.log(Level.INFO, "Trying to open device. Is open: " + this.device.isOpen());
         this.device.close();

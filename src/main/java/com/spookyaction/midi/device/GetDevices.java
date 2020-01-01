@@ -8,6 +8,7 @@ import java.util.logging.Level;
 
 public class GetDevices {
 
+    // Create a list of all available midi devices and check if a transmitter is available.
     public Vector<MidiDevice.Info> getDeviceList() throws MidiUnavailableException {
         Vector<MidiDevice.Info> transmitterInfo = new Vector<MidiDevice.Info>();
         MidiDevice device;

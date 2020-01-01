@@ -16,7 +16,8 @@ public class LoginRequest {
     public Client client;
     public String sessionID;
 
-
+    // Authenticate with the web service
+    // Get a sessionID as a response
     public LoginRequest(String username, String password){
 
         HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic(username, password);

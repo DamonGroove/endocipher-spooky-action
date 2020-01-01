@@ -15,8 +15,9 @@ public class Record {
         this.midiDevice = midiDevice;
     }
 
+    // This is where the devices and sequencer are connected
+    // Now the Midi data can be passed through to the Data List
     public void record() {
-
 
         openDevice = new OpenDevice(midiDevice);
         openDevice.openDevice();
@@ -34,6 +35,7 @@ public class Record {
         }
     }
 
+    // Close devices and sequencer
     public void stop() {
         openSequencer.closeSequencer();
         virtualDevice.close();
