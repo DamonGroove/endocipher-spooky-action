@@ -1,4 +1,4 @@
-package com.spookyaction.midi.in;
+package com.spookyaction.midi.input;
 
 import com.spookyaction.Main;
 

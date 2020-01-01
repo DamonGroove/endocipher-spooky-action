@@ -1,7 +1,7 @@
 package com.spookyaction;
 
 import com.spookyaction.midi.device.GetDevices;
-import com.spookyaction.midi.out.Record;
+import com.spookyaction.midi.output.Record;
 import com.spookyaction.rest.LoginRequest;
 
 import javax.sound.midi.MidiDevice;
