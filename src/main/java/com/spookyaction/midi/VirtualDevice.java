@@ -1,4 +1,4 @@
-package com.spookyaction.midi.output;
+package com.spookyaction.midi;
 
 import com.spookyaction.InputDataListBuilder;
 import com.spookyaction.Main;
@@ -44,6 +44,14 @@ public class VirtualDevice implements Transmitter, Receiver {
                 inputDataListBuilder.addToInputDataList(duration, dynamic, positionX, positionY);
             }
             sumDurations = timeStamp;
+
+            if (count >= myMaxCount) {
+                Batch batch = inputDataListBuilder.build();
+                // sent batch to API
+                // advanced version: Add batch to a queue that will be sent to the API by another thread
+                inputDataListBuilder = new InputDataListBuilder();
+                count = 0;
+            }
         }
 
         // Pass the original midi message and time stamp to the default receiver

@@ -8,6 +8,7 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import java.util.logging.Level;
 
@@ -22,9 +23,15 @@ public class LoginRequest {
 
         HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic(username, password);
 
-        client = ClientBuilder.newClient( new ClientConfig()
-                .register(feature)
-                .register(JacksonFeature.class));
+        client = ClientBuilder.newClient(new ClientConfig());
+
+        String entity = client.target("http://localhost:8080/spooky/rest/v1")
+                .path("login")
+                .request(MediaType.APPLICATION_JSON)
+                .header("Authorization","ApiKey asldfkjaslkdf")
+                .post(String.class);
+
+
 
         String entity = client.target("http://localhost:8080/spooky/rest/v1")
                 .path("login")

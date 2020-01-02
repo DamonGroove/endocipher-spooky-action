@@ -24,4 +24,8 @@ public class InputDataListBuilder {
                     inputDataList.subList(listSize - maxData, listSize - 1));
         }
     }
+
+    public RequestEntity build() {
+        // convert buffer to request entity
+    }
 }
