@@ -1,25 +1,22 @@
 package com.spookyaction;
 
 import com.spookyaction.midi.MidiProvider;
-//import com.spookyaction.midi.device.GetDevices;
-//import com.spookyaction.midi.output.Record;
-import com.spookyaction.rest.LoginRequest;
+import com.spookyaction.rest.ApiClient;
+import com.spookyaction.rest.entities.MidiSession;
 
 import javax.sound.midi.MidiDevice;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.Vector;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class Main{
 
-    // Needs to be more secure
-    public static LoginRequest login;
-
+    public static ApiClient apiClient;
     public static Logger logger;
+    public static MidiSession midiSession;
 
     public static void main(String[] args) {
         SpookyLogger spookyLogger = new SpookyLogger();
@@ -28,7 +25,8 @@ public class Main{
         LogManager logManager = LogManager.getLogManager();
         logger = logManager.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-        login = new LoginRequest("username", "password");
+        apiClient = new ApiClient();
+        apiClient.login("username", "password");
 
         try {
 
@@ -42,6 +40,8 @@ public class Main{
             }
             String selection = scanner.nextLine();
             System.out.println("You selected:" + selection);
+
+            apiClient.createMidiCaptureSession();
 
             MidiProvider provider = new MidiProvider(MidiSystem.getMidiDevice(deviceList.get(Integer.parseInt(selection))));
             provider.record();
