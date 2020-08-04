@@ -1,6 +1,6 @@
 # endocipher-spooky_action
 
-Copyright 2020 Damon Sawyer
+Copyright 2020 Damon Groove
 
 All Rights Reserved.
 
